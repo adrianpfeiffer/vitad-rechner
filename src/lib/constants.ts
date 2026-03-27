@@ -18,7 +18,7 @@ export const PHARMACY = {
 export const NOTIFICATION_EMAIL = "adrian.pfeiffer.ruiz@gmail.com";
 
 export const EMAILJS = {
-  serviceId: "YOUR_SERVICE_ID",
-  templateId: "YOUR_TEMPLATE_ID",
-  publicKey: "YOUR_PUBLIC_KEY",
+  serviceId: "service_0rhj2mg",
+  templateId: "template_2rp017l",
+  publicKey: "_QwxW5t34x9uVqvUS",
 };
