@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #2D6A4F;
-  --color-primary-light: #B7E4C7;
-  --color-primary-dark: #1B4332;
+  --color-primary: #3F617D;
+  --color-primary-light: #C5D5E4;
+  --color-primary-dark: #2C4459;
   --color-background: #FAFAF5;
   --color-danger: #DC2626;
   --color-warning: #D97706;
@@ -35,6 +35,8 @@ body {
   }
 
   .print-only {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column;
+    min-height: 100vh;
   }
 }

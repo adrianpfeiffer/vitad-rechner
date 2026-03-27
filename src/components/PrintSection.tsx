@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { sendPrintNotification } from "../lib/email";
 
 export interface PatientData {
@@ -9,21 +8,13 @@ export interface PatientData {
 }
 
 interface Props {
-  onPatientChange: (data: PatientData) => void;
+  patient: PatientData;
+  onPatientChange: (patient: PatientData) => void;
 }
 
-export default function PrintSection({ onPatientChange }: Props) {
-  const [patient, setPatient] = useState<PatientData>({
-    name: "",
-    birthdate: "",
-    patientId: "",
-    gender: "",
-  });
-
+export default function PrintSection({ patient, onPatientChange }: Props) {
   function update(field: keyof PatientData, value: string) {
-    const next = { ...patient, [field]: value };
-    setPatient(next);
-    onPatientChange(next);
+    onPatientChange({ ...patient, [field]: value });
   }
 
   function handlePrint() {

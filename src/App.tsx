@@ -3,10 +3,11 @@ import Header from "./components/Header";
 import Calculator from "./components/Calculator";
 import ReferenceTable from "./components/ReferenceTable";
 import Disclaimer from "./components/Disclaimer";
-import PrintSection, { type PatientData } from "./components/PrintSection";
+import PrintSection from "./components/PrintSection";
 import PrintableReport from "./components/PrintableReport";
 import Footer from "./components/Footer";
 import type { CalcResults, Unit } from "./lib/calc";
+import type { PatientData } from "./components/PrintSection";
 
 type FullResults = CalcResults & {
   inputs: {
@@ -39,9 +40,9 @@ export default function App() {
       <Header />
       <main className="flex-1">
         <Calculator onResultsChange={handleResultsChange} />
+        <PrintSection patient={patient} onPatientChange={setPatient} />
         <ReferenceTable />
         <Disclaimer />
-        <PrintSection onPatientChange={setPatient} />
       </main>
       <Footer />
       <PrintableReport results={resultsRef.current} patient={patient} />

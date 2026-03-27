@@ -9,7 +9,7 @@ const rows = [
 
 export default function ReferenceTable() {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-8">
+    <section className="no-print max-w-4xl mx-auto px-4 py-8">
       <h2 className="text-xl font-bold text-primary-dark mb-4">Referenzwerte</h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-sm">

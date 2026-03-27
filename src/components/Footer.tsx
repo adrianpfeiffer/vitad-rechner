@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto px-4 py-6 text-center text-sm space-y-1">
         <p>{PHARMACY.name} · {PHARMACY.address}</p>
         <p>
-          Tel: {PHARMACY.phone} ·{" "}
+          Tel: {PHARMACY.phone} · Mobil: {PHARMACY.mobile} ·{" "}
           <a href={`mailto:${PHARMACY.email}`} className="underline hover:text-white">
             {PHARMACY.email}
           </a>{" "}

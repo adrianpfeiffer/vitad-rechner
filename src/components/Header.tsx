@@ -13,8 +13,9 @@ export default function Header() {
           <h1 className="text-2xl font-bold tracking-tight">{PHARMACY.name}</h1>
           <p className="text-sm opacity-90">{PHARMACY.address}</p>
           <p className="text-sm opacity-90">
-            Tel: {PHARMACY.phone} · {PHARMACY.email}
+            Tel: {PHARMACY.phone} · Mobil: {PHARMACY.mobile}
           </p>
+          <p className="text-sm opacity-90">{PHARMACY.email}</p>
         </div>
       </div>
     </header>
