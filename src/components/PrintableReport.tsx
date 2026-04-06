@@ -29,7 +29,7 @@ const refRows = [
 ];
 
 export default function PrintableReport({ results, patient }: Props) {
-  if (!results) return null;
+  if (!results || results.isTargetTooHigh) return null;
 
   const hasPatientInfo = patient.name || patient.birthdate || patient.patientId || patient.gender;
 

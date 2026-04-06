@@ -16,6 +16,7 @@ export interface CalcResults {
   dailyMaintenance_ug: string;
   isTargetTooLow: boolean;
   isWeightOutOfRange: boolean;
+  isTargetTooHigh: boolean;
   days: number;
 }
 
@@ -25,15 +26,17 @@ export function calculate(inputs: CalcInputs): CalcResults {
   const targetLevel_ng = inputs.targetLevel / unitFactor;
   const isTargetTooLow = targetLevel_ng <= currentLevel_ng;
   const isWeightOutOfRange = inputs.weight < 40 || inputs.weight > 300;
+  const isTargetTooHigh = targetLevel_ng > 60;
 
-  const totalInitialDose_IU = isTargetTooLow
-    ? 0
-    : (targetLevel_ng - currentLevel_ng) * inputs.weight * 100;
+  const totalInitialDose_IU =
+    isTargetTooLow || isTargetTooHigh
+      ? 0
+      : (targetLevel_ng - currentLevel_ng) * inputs.weight * 100;
   const dailyInitialDose_IU = Math.ceil(totalInitialDose_IU / inputs.days);
   const dailyInitialDose_ug = (dailyInitialDose_IU / 40).toFixed(1);
 
   const dailyMaintenance_IU = Math.ceil(
-    (0.24 * targetLevel_ng * (inputs.weight / 70) * 10000) / 30
+    (0.24 * targetLevel_ng * (inputs.weight / 70) * 10000) / 30,
   );
   const dailyMaintenance_ug = (dailyMaintenance_IU / 40).toFixed(1);
 
@@ -44,6 +47,7 @@ export function calculate(inputs: CalcInputs): CalcResults {
     dailyMaintenance_ug,
     isTargetTooLow,
     isWeightOutOfRange,
+    isTargetTooHigh,
     days: inputs.days,
   };
 }

@@ -134,13 +134,19 @@ export default function Calculator({ onResultsChange }: Props) {
         <div className="mt-6 pt-5 border-t-2 border-primary-light">
           <h3 className="text-lg font-bold text-primary-dark mb-3">Ergebnis</h3>
 
+          {results.isTargetTooHigh && (
+            <div className="bg-amber-50 border border-amber-300 text-amber-800 rounded-lg p-3 mb-3 text-sm">
+              Hinweis: Bei Zielwerten über 60 ng/ml (150 nmol/l) ist keine Berechnung möglich.
+            </div>
+          )}
+
           {results.isWeightOutOfRange && (
             <div className="bg-red-50 border border-red-300 text-red-800 rounded-lg p-3 mb-3 text-sm">
               Bitte geben Sie ein Gewicht zwischen 40 und 300 kg ein.
             </div>
           )}
 
-          {!results.isWeightOutOfRange && (
+          {!results.isWeightOutOfRange && !results.isTargetTooHigh && (
             <div className="space-y-3">
               {/* Initial dose */}
               {results.isTargetTooLow ? (
